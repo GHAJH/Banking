@@ -11,17 +11,6 @@
 #include <string.h>
 #include <windows.h>
 char a[100];
-int openacc();
-int accbal();
-int fundtrs();
-int billpayrec();
-int chkbkcrd();
-int depacc();
-int loan();
-int inv();
-int sec();
-int filtax(); 
-int acccls();
 void login(void);
 void account(void);
 void accountcreated(void);
@@ -30,6 +19,7 @@ void loginsu(void);
 void checkbalance(char*);
 void transfermoney(void);
 void logout(void);
+void cheque(void);
 void gotoxy(int x, int y)
 {
 	COORD c;
@@ -63,9 +53,17 @@ struct money {
 struct userpass {
 	char password[50];
 };
+struct chq {
+	char fuser[50];
+	int id[50];
+	char luser[50];
+	int pan[50];
+	int aad[50];
+	
+};
 void intro()
 {
-	printf("\n\n\n\t  ONLINE");
+	printf("\n\n\n\t  GHAJH");
 	printf("\n\n\t  BANKING");
 	printf("\n\n\t  SYSTEM");
 	printf("\n\n\n\nMADE BY :\n1.Akshay Satya\n2.Himani Garige\n3.Jahnavi\n4.Harina suri\n5.Gautam kedia\n");
@@ -80,7 +78,7 @@ int main()
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n");
 	printf("\n\n\n\t\t Welcome to Online Banking System");
 	printf("\n\t 1.Create Account");
-	printf("\n\t  ");
+	printf("\n\t 2.Apply for Cheque book");
 	printf("\n\tB ");
 	printf("\n\t C");
 	printf("\n\t D");
@@ -96,11 +94,14 @@ int main()
 	{
 		case 1:
 			system("cls");
-		printf("\n\n USERNAME 50 CHARACTERS MAX!!");
-		printf("\n\n PASSWORD 50 CHARACTERS MAX!!");
-		account();
-		break;
-			
+		    printf("\n\n USERNAME 50 CHARACTERS MAX!!");
+		    printf("\n\n PASSWORD 50 CHARACTERS MAX!!");
+		    account();
+		    break;
+	    case 2:
+	    	system("cls");
+	    	cheque();
+	    	break;
 	}
     
 }
@@ -583,4 +584,40 @@ void logout(void)
 	printf("press any key to continue..");
 
 	getch();
+}
+void cheque(void)
+{
+	struct chq s;
+	char b;
+	FILE *fd;
+	fd = fopen("chq.txt", "ab");
+	printf("Enter your First Name:");
+	scanf("%s",&s.fuser);
+	printf("Enter your Last Name:");
+	scanf("%s",&s.luser);
+	printf("Enter Your Id:");
+	scanf("%d",&s.id);
+	printf("Enter your Pan number:");
+	scanf("%s",&s.pan);
+	printf("Enter your Aadhar number:");
+	scanf("%s",&s.aad);
+	printf("Your Details:-");
+	printf("\nFirst name- %s\nLAst Name- %s\nID- %d\nPan Number- %s\nAadhar Number- %s\n",s.fuser,s.luser,s.id,s.pan,s.aad);
+	printf("Press Enter to continue");
+	getch( );
+	fwrite(&s, sizeof(s),1, fd);
+		fclose(fd);
+	
+	
+	
+	for (int i = 0; i < 70; i++) {
+		for (int j = 0; j < 1200000; j++) {
+			j++;
+			j--;
+		}
+		printf("*");
+	}
+	printf("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	printf("\n\n\n \t\t\t\t\tYour Cheque book has been Applied\n\n\n\n);
+	printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 }
