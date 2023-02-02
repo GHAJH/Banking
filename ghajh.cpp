@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<string.h>
-#include<stdlib.h>Ghajh1234
+#include<stdlib.h>
 #include<iostream>
 #include<fstream>
 #include<cctype>
