@@ -66,7 +66,7 @@ void intro()
 	printf("\n\n\n\t  GHAJH");
 	printf("\n\n\t  BANKING");
 	printf("\n\n\t  SYSTEM");
-	printf("\n\n\n\nMADE BY :\n1.Akshay Satya\n2.Himani Garige\n3.Jahnavi\n4.Harina suri\n5.Gautam kedia\n");
+	printf("\n\n\n\nMADE BY :\n1.Akshay Satya\n2.Himani Garige\n3.J.Jahnavi\n4.Harina suri\n5.Gautham kedia\n");
 	printf("\nUNIVERSITY :\nKeshav Memorial Institute Of Technology");
 	
 }
