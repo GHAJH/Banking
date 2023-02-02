@@ -5,7 +5,7 @@
 #include<fstream>
 #include<cctype>
 #include<iomanip>
-int a;
+char a[100];
 int openacc();
 int accbal();
 int fundtrs();
@@ -19,32 +19,30 @@ int filtax();
 int acccls();
 void intro()
 {
-	printf("\n\n\n\t  Online");
-	printf("\n\n\tBanking");
+	printf("\n\n\n\t  ONLINE");
+	printf("\n\n\t  BANKING");
 	printf("\n\n\t  SYSTEM");
-	printf("\n\n\n\nMADE BY :\n1.Akshay Satya\n2.Himani Garige\n3.Jahnavi\n4.Harina suri\n5.Gautam kedia");
-	printf("\nUniversity :Keshav Memorial Institute Of Technology");
-	cin.get();
+	printf("\n\n\n\nMADE BY :\n1.Akshay Satya\n2.Himani Garige\n3.Jahnavi\n4.Harina suri\n5.Gautam kedia\n");
+	printf("\nUNIVERSITY :\nKeshav Memorial Institute Of Technology");
+	
 }
 int main()
 {
 	int n;
 	intro();
-	do
-	 {
-	printf("\t\t Welcome to Online Banking System");
+	gets(a);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	printf("\n\n\n\t\t Welcome to Online Banking System");
 	printf("\n\t 1.Open Account");
-	printf("\n\t ");
-	printf("\n\t ");
-	printf("\n\t ");
-	printf("\n\t ");
-	printf("\n\t ");
-	printf("\n\t ");
-	printf("\n\t ");
-	printf("\n\t ");
-	printf("\n\t ");
-	printf("\n\t ");
-     }
-while(n>0);
+	printf("\n\t A ");
+	printf("\n\tB ");
+	printf("\n\t C");
+	printf("\n\t D");
+	printf("\n\t E");
+	printf("\n\t F");
+	printf("\n\t H");
+	printf("\n\t I");
+	printf("\n\t J");
+	printf("\n\t K");
+    
 }
-
