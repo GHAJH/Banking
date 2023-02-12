@@ -671,7 +671,7 @@ void del()
 	printf("\nYEAR-");
 	scanf("%d", &u1.year);
 
-	printf("\n\nADHAR NUMBER");
+	printf("\n\nAADHAR NUMBER");
 	scanf("%s", u1.adharnum);
 
 	printf("\n\nPHONE NUMBER");
