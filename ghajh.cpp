@@ -1,14 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include<iostream>
-#include<fstream>
-#include<cctype>
-#include<iomanip>
 #include <conio.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <windows.h>
 char a[100];
 void login(void);
@@ -24,12 +17,11 @@ void del(void);
 void accountdeleted(void);
 void gotoxy(int x, int y)
 {
-	COORD c;
+	COORD c; 
 	c.X = x;
 	c.Y = y;
 
-	SetConsoleCursorPosition(
-		GetStdHandle(STD_OUTPUT_HANDLE), c);
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
 struct pass {
 	char username[50];
@@ -78,6 +70,7 @@ int main()
 	int n;
 	intro();
 	getch();
+	system("cls");
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	printf("\t\t Welcome to Online Banking System");
 	printf("\n\t 1.Create Account");
@@ -85,7 +78,7 @@ int main()
 	printf("\n\t 3.Apply for Cheque book");
 	printf("\n\t 4.Delete An Previous Account");
 	printf("\n\t 5.Exit\n");
-	printf("Enter What You wanna Do:\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	printf("Enter What You wanna Do:");
 	scanf("%d",&n);
 	switch(n)
 	{
