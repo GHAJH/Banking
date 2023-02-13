@@ -17,37 +17,42 @@ void del(void);
 void accountdeleted(void);
 void gotoxy(int x, int y)
 {
-	COORD c; 
+	COORD c;
 	c.X = x;
 	c.Y = y;
 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
-struct pass {
+struct pass 
+{
 	char username[50];
 	int date, month, year;
 	char pnumber[15];
-	char aadharnum[20];
+	char adharnum[20];
 	char fname[50];
 	char lname[40];
 	char fathname[40];
 	char mothname[40];
 	char address[50];
 	char typeaccount[20];
+	char pan[20];
 };
 
 // Structure to keep track
 // of amount transfer
-struct money {
+struct money 
+{
 	char usernameto[50];
 	char userpersonfrom[50];
 	long int money1;
 };
 
-struct userpass {
+struct userpass
+ {
 	char password[50];
 };
-struct chq {
+struct chq 
+{
 	char fuser[50];
 	int id[50];
 	char luser[50];
@@ -70,7 +75,7 @@ int main()
 	int n;
 	intro();
 	getch();
-	system("cls");
+	system("cls");//clrscr
 	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
 	printf("\t\t Welcome to Online Banking System");
 	printf("\n\t 1.Create Account");
@@ -113,17 +118,15 @@ void account(void)
 	FILE *fp, *fu;
 	struct pass u1;
 	struct userpass p1;
-
 	struct userpass u2;
 
 	// Opening file to
 	// write data of a user
 	fp = fopen("username.txt", "ab");
-
 	// Inputs
 	system("cls");
 	printf("\n\n!!!!!CREATE ACCOUNT!!!!!");
-
+	
 	printf("\n\nFIRST NAME..");
 	scanf("%s", &u1.fname);
 
@@ -145,13 +148,18 @@ void account(void)
 	printf("\n\nDATE OF BIRTH..");
 	printf("\nDATE-");
 	scanf("%d", &u1.date);
+	
 	printf("\nMONTH-");
 	scanf("%d", &u1.month);
+	
 	printf("\nYEAR-");
 	scanf("%d", &u1.year);
 
-	printf("\n\nAADHAR NUMBER");
-	scanf("%s", u1.aadharnum);
+	printf("\n\nADHAR NUMBER");
+	scanf("%s", u1.adharnum);
+	
+	printf("\n\nPAN CARD  NUMBER");
+	scanf("%s", u1.pan);
 
 	printf("\n\nPHONE NUMBER");
 	scanf("%s", u1.pnumber);
@@ -163,9 +171,11 @@ void account(void)
 
 	// Taking password in the form of
 	// stars
-	for (i = 0; i < 50; i++) {
+	for (i = 0; i < 50; i++) 
+	{
 		ch = getch();
-		if (ch != 13) {
+		if (ch != 13)
+		 {
 			password[i] = ch;
 			ch = '*';
 			printf("%c", ch);
@@ -190,12 +200,14 @@ void account(void)
 // Successful account creation
 void accountcreated(void)
 {
+
 	int i;
 	char ch;
 	system("cls");
 	printf(
 		"PLEASE WAIT....\n\nYOUR DATA IS PROCESSING....");
-	for (i = 0; i < 200000000; i++) {
+	for (i = 0; i < 200000000; i++)
+	 {
 		i++;
 		i--;
 	}
@@ -213,24 +225,26 @@ void accountcreated(void)
 void login(void)
 {
 	system("cls");
-
+	
 	char username[50];
 	char password[50];
-
+	
 	int i, j, k;
 	char ch;
+	
 	FILE *fp, *fu;
 	struct pass u1;
 	struct userpass u2;
 
 	// Opening file of
 	// user data
-	fp = fopen("username.txt",
-			"rb");
+	fp = fopen("username.txt","rb");
 
-	if (fp == NULL) {
+	if (fp == NULL) 
+	{
 		printf("ERROR IN OPENING FILE");
 	}
+	
 	gotoxy(34, 2);
 	printf(" ACCOUNT LOGIN ");
 	gotoxy(7, 5);
@@ -249,7 +263,8 @@ void login(void)
 	printf("PASSWORD..");
 
 	// Input the password
-	for (i = 0; i < 50; i++) {
+	for (i = 0; i < 50; i++)
+	 {
 		ch = getch();
 		if (ch != 13) {
 			password[i] = ch;
@@ -263,17 +278,14 @@ void login(void)
 
 	// Checking if username
 	// exists in the file or not
-	while (fread(&u1, sizeof(u1),
-				1, fp)) {
-		if (strcmp(username,
-				u1.username)
-			== 0) {
+	while (fread(&u1, sizeof(u1),1, fp))
+	{
+		if (strcmp(username,u1.username)== 0)
+		{
 			loginsu();
 			display(username);
 		}
 	}
-		
-
 	// Closing the file
 	fclose(fp);
 }
@@ -287,19 +299,17 @@ void loginsu(void)
 	struct pass u1;
 	system("cls");
 	printf("Fetching account details.....\n");
-	for (i = 0; i < 20000; i++) {
+	for (i = 0; i < 20000; i++) 
+	{
 		i++;
 		i--;
 	}
-
 	gotoxy(30, 10);
 	printf("LOGIN SUCCESSFUL....");
 	gotoxy(0, 20);
 	printf("Press enter to continue");
-
 	getch();
 }
-
 // Display function to show the
 // data of the user on screen
 void display(char username1[])
@@ -310,7 +320,8 @@ void display(char username1[])
 	fp = fopen("username.txt", "rb");
 	struct pass u1;
 
-	if (fp == NULL) {
+	if (fp == NULL) 
+	{
 		printf("error in opening file");
 	}
 
@@ -343,7 +354,7 @@ void display(char username1[])
 
 			gotoxy(55, 16);
 			printf("AADHAR CARD NUMBER..%s",
-				u1.aadharnum);
+				u1.adharnum);
 
 			gotoxy(55, 18);
 			printf("MOBILE NUMBER..%s",
@@ -671,8 +682,8 @@ void del()
 	printf("\nYEAR-");
 	scanf("%d", &u1.year);
 
-	printf("\n\nAADHAR NUMBER");
-	scanf("%s", u1.aadharnum);
+	printf("\n\nADHAR NUMBER");
+	scanf("%s", u1.adharnum);
 
 	printf("\n\nPHONE NUMBER");
 	scanf("%s", u1.pnumber);
