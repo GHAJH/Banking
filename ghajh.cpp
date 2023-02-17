@@ -4,23 +4,23 @@
 #include <conio.h>
 #include <windows.h>
 char a[100];
-void login(void);
-void account(void);
-void accountcreated(void);
-void display(char*);
-void loginsu(void);
-void checkbalance(char*);
-void transfermoney(void);
-void logout(void);
-void cheque(void);
-void del(void);
-void accountdeleted(void);
-void gotoxy(int x, int y)
+void login(void);//G
+void account(void);//A
+void accountcreated(void);//Hi
+void display(char*);//A
+void loginsu(void);//G
+void checkbalance(char*);//Ha	
+void transfermoney(void);//Ha
+void logout(void);//G
+void cheque(void);//Hi
+void del(void);//Hi
+void accountdeleted(void);//Ha
+void gotoxy(int x, int y)//A
 {
 	COORD c;
 	c.X = x;
 	c.Y = y;
-
+	
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
 }
 struct pass 
@@ -36,6 +36,7 @@ struct pass
 	char address[50];
 	char typeaccount[20];
 	char pan[20];
+	int acno[12];
 };
 
 // Structure to keep track
@@ -61,12 +62,12 @@ struct chq
 	int ph[50];
 	
 };
-void intro()
+void intro()//A
 {
-	printf("\n\n\n\t  GHAJH");
+	printf("\n\n\n\t  ONLINE");
 	printf("\n\n\t  BANKING");
 	printf("\n\n\t  SYSTEM");
-	printf("\n\n\n\nMADE BY :\n1.Akshay Satya\n2.Himani Garige\n3.Jahnavi\n4.Harina suri\n5.Gautham kedia\n");
+	printf("\n\n\n\nMADE BY :\n1.Akshay Satya\n2.Himani Garige\n3.J.Jahnavi\n4.Harina suri\n5.Gautham kedia\n");
 	printf("\nUNIVERSITY :\nKeshav Memorial Institute Of Technology");
 	
 }
@@ -127,22 +128,22 @@ void account(void)
 	system("cls");
 	printf("\n\n!!!!!CREATE ACCOUNT!!!!!");
 	
-	printf("\n\nFIRST NAME..");
+	printf("\n\nFIRST NAME=\n");
 	scanf("%s", &u1.fname);
 
-	printf("\n\n\nLAST NAME..");
+	printf("\n\n\nLAST NAME=\n");
 	scanf("%s", &u1.lname);
 
-	printf("\n\nFATHER's NAME..");
+	printf("\n\nFATHER's NAME=\n");
 	scanf("%s", &u1.fathname);
 
-	printf("\n\nMOTHER's NAME..");
+	printf("\n\nMOTHER's NAME=\n");
 	scanf("%s", &u1.mothname);
 
-	printf("\n\nADDRESS..");
+	printf("\n\nADDRESS=\n");
 	scanf("%s", &u1.address);
 
-	printf("\n\nACCOUNT TYPE");
+	printf("\n\nACCOUNT TYPE=\n");
 	scanf("%s", &u1.typeaccount);
 
 	printf("\n\nDATE OF BIRTH..");
@@ -155,19 +156,22 @@ void account(void)
 	printf("\nYEAR-");
 	scanf("%d", &u1.year);
 
-	printf("\n\nADHAR NUMBER");
+	printf("\n\nADHAR NUMBER=\n");
 	scanf("%s", u1.adharnum);
 	
-	printf("\n\nPAN CARD  NUMBER");
+	printf("\n\nPAN CARD  NUMBER=\n");
 	scanf("%s", u1.pan);
 
-	printf("\n\nPHONE NUMBER");
+	printf("\n\nPHONE NUMBER=\n");
 	scanf("%s", u1.pnumber);
-
-	printf("\n\nUSERNAME.. ");
+	
+    printf("Enter Your Account Number =\n");
+    scanf("%d", u1.acno);
+    
+	printf("\n\nUSERNAME=\n ");
 	scanf("%s", &u1.username);
 
-	printf("\n\nPASSWORD..");
+	printf("\n\nPASSWORD=\n");
 
 	// Taking password in the form of
 	// stars
@@ -203,9 +207,9 @@ void accountcreated(void)
 
 	int i;
 	char ch;
+	struct pass u1;
 	system("cls");
-	printf(
-		"PLEASE WAIT....\n\nYOUR DATA IS PROCESSING....");
+	printf("PLEASE WAIT....\n\nYOUR DATA IS PROCESSING....");
 	for (i = 0; i < 200000000; i++)
 	 {
 		i++;
@@ -216,7 +220,6 @@ void accountcreated(void)
 
 	printf("ACCOUNT CREATED SUCCESSFULLY....");
 	gotoxy(0, 20);
-
 	printf("Press enter to login");
 
 	getch(); 
@@ -339,37 +342,45 @@ void display(char username1[])
 			printf("==== YOUR ACCOUNT INFO ====");
 			gotoxy(55, 8);
 			printf("***************************");
+			
 			gotoxy(55, 10);
+			printf("ACCOUNT NUMBER..%d",
+				u1.acno);
+			gotoxy(55, 12);
 			printf("NAME..%s %s", u1.fname,
 				u1.lname);
 
-			gotoxy(55, 12);
+			gotoxy(55, 14);
 			printf("FATHER's NAME..%s %s",
 				u1.fathname,
 				u1.lname);
 
-			gotoxy(55, 14);
+			gotoxy(55, 16);
 			printf("MOTHER's NAME..%s",
 				u1.mothname);
 
-			gotoxy(55, 16);
+			gotoxy(55, 18);
 			printf("AADHAR CARD NUMBER..%s",
 				u1.adharnum);
 
-			gotoxy(55, 18);
+			gotoxy(55, 20);
 			printf("MOBILE NUMBER..%s",
 				u1.pnumber);
 
-			gotoxy(55, 20);
+			gotoxy(55, 22);
 			printf("DATE OF BIRTH.. %d-%d-%d",
 				u1.date, u1.month, u1.year);
 
-			gotoxy(55, 22);
+			gotoxy(55, 24);
 			printf("ADDRESS..%s", u1.address);
 
-			gotoxy(55, 24);
+			gotoxy(55, 26);
 			printf("ACCOUNT TYPE..%s",
 				u1.typeaccount);
+			
+			gotoxy(55, 28);
+			printf("PAN NUMBER..%d",
+				u1.pnumber);
 		}
 	}
 
@@ -392,9 +403,10 @@ void display(char username1[])
 	printf(" 4....EXIT\n\n");
 
 	printf(" ENTER YOUR CHOICES..");
-	scanf("%d", &choice);
+	scanf("%d",&choice);
 
-	switch (choice) {
+	switch (choice) 
+	{
 	case 1:
 		checkbalance(username1);
 		break;
@@ -574,8 +586,7 @@ void checkbalance(char username2[])
 	display(username2);
 }
 
-// Logout function to bring
-// user to the login screen
+// Logout function to bring// user to the login screen
 void logout(void)
 {
 	int i, j;
