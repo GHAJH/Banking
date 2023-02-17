@@ -6,7 +6,7 @@
 char a[100];
 void login(void);//G
 void account(void);//A
-void accountcreated(void);//Hi
+void accountcreated(void);//Ha
 void display(char*);//A
 void loginsu(void);//G
 void checkbalance(char*);//Ha	
@@ -14,7 +14,7 @@ void transfermoney(void);//Ha
 void logout(void);//G
 void cheque(void);//Hi
 void del(void);//Hi
-void accountdeleted(void);//Ha
+void accountdeleted(void);//Hi
 void gotoxy(int x, int y)//A
 {
 	COORD c;
