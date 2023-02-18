@@ -1,8 +1,9 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-#include <conio.h>
-#include <windows.h>
+#include<conio.h>
+#include<windows.h>
+#include<time.h>
 char a[100];
 void login(void);//G
 void account(void);//A
@@ -13,8 +14,8 @@ void checkbalance(char*);//Ha
 void transfermoney(void);//Ha
 void logout(void);//G
 void cheque(void);//Hi
-void del(void);//Hi
-void accountdeleted(void);//Hi
+void accountdeleted(void);//hi
+long long int random_num;
 void gotoxy(int x, int y)//A
 {
 	COORD c;
@@ -52,16 +53,6 @@ struct userpass
  {
 	char password[50];
 };
-struct chq 
-{
-	char fuser[50];
-	int id[50];
-	char luser[50];
-	int pan[50];
-	int aad[50];
-	int ph[50];
-	
-};
 void intro()//A
 {
 	printf("\n\n\n\t  ONLINE");
@@ -71,46 +62,7 @@ void intro()//A
 	printf("\nUNIVERSITY :\nKeshav Memorial Institute Of Technology");
 	
 }
-int main()
-{
-	int n;
-	intro();
-	getch();
-	system("cls");//clrscr
-	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
-	printf("\t\t Welcome to Online Banking System");
-	printf("\n\t 1.Create Account");
-	printf("\n\t 2.Login");
-	printf("\n\t 3.Apply for Cheque book");
-	printf("\n\t 4.Delete An Previous Account");
-	printf("\n\t 5.Exit\n");
-	printf("Enter What You wanna Do:");
-	scanf("%d",&n);
-	switch(n)
-	{
-		case 1:
-			system("cls");
-		    printf("\n\n USERNAME 50 CHARACTERS MAX!!");
-		    printf("\n\n PASSWORD 50 CHARACTERS MAX!!");
-		    account();
-		    break;
-		case 2:
-			login();
-			break;
-	    case 3:
-	    	system("cls");
-	    	cheque();
-	    	break;
-	    case 4:
-	    	system("cls");
-	    	del();
-	    	break;
-	    case 5:
-	    	exit(0);
-	    	break;
-	}
-    
-}
+
 void account(void)
 {
 	char password[20];
@@ -164,9 +116,6 @@ void account(void)
 
 	printf("\n\nPHONE NUMBER=\n");
 	scanf("%s", u1.pnumber);
-	
-    printf("Enter Your Account Number =\n");
-    scanf("%d", u1.acno);
     
 	printf("\n\nUSERNAME=\n ");
 	scanf("%s", &u1.username);
@@ -208,6 +157,11 @@ void accountcreated(void)
 	int i;
 	char ch;
 	struct pass u1;
+	
+    srand(time(NULL)); // Seed the random number generator with the current time
+
+    random_num = rand() % 900000000000 + 100000000000; // Generate a random number between 100000000000 and 999999999999
+    printf("Random 12 digit number: %lld\n", random_num);
 	system("cls");
 	printf("PLEASE WAIT....\n\nYOUR DATA IS PROCESSING....");
 	for (i = 0; i < 200000000; i++)
@@ -219,6 +173,7 @@ void accountcreated(void)
 	gotoxy(30, 10);
 
 	printf("ACCOUNT CREATED SUCCESSFULLY....");
+	printf("ACCOUNT NUMBER: %lld\n", random_num);
 	gotoxy(0, 20);
 	printf("Press enter to login");
 
@@ -289,12 +244,16 @@ void login(void)
 			display(username);
 		}
 	}
+	system("cls");
+	printf("\n\nLOGIN UNSUCCESSFUL");
 	// Closing the file
 	fclose(fp);
 }
 
+
 // Redirect after
 // successful login
+
 void loginsu(void)
 {
 	int i;
@@ -315,6 +274,59 @@ void loginsu(void)
 }
 // Display function to show the
 // data of the user on screen
+void cheque(void)
+{
+	system("cls");
+	char username[50];
+	struct pass u1;
+	FILE *fp;
+	fp = fopen("username.txt", "ab");
+			
+	    for (int i = 0; i < 70; i++) 
+		{
+		
+		for (int j = 0; j < 1200000; j++) 
+		{
+			j++;
+			j--;
+		}
+		printf("*");
+	}
+	printf("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	printf("\n\n\n \t\t\t\t\tYour Cheque book has been Applied\n\n\n\n");
+	printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+    printf("\n\n\nAn message will be sent to your registered mobile number when the checkbook is ready to be shipped;)");
+for (int j = 0; j < 1200000; j++) 
+		{
+			j++;
+			j--;
+		}
+		getch();
+
+}
+void accountdeleted(void)
+{
+	int i;
+	char ch,s;
+	system("cls");
+	printf(
+		"PLEASE WAIT....\n\nYOUR DATA IS PROCESSING....");
+	for (i = 0; i < 200000000; i++)
+	{
+		i++;
+		i--;
+	}
+
+	gotoxy(30, 10);
+
+	printf("ACCOUNT DELETED SUCCESSFULLY....");
+	for (i = 0; i < 200000000; i++)
+	{
+		i++;
+		i--;
+	}
+	getch();
+}
 void display(char username1[])
 {
 	system("cls");
@@ -329,7 +341,8 @@ void display(char username1[])
 	}
 
 	while (fread(&u1, sizeof(u1),
-				1, fp)) {
+				1, fp)) 
+				{
 		if (strcmp(username1,
 				u1.username)
 			== 0) {
@@ -344,8 +357,8 @@ void display(char username1[])
 			printf("***************************");
 			
 			gotoxy(55, 10);
-			printf("ACCOUNT NUMBER..%d",
-				u1.acno);
+			printf("ACCOUNT NUMBER..%lld\n",
+			 random_num);
 			gotoxy(55, 12);
 			printf("NAME..%s %s", u1.fname,
 				u1.lname);
@@ -398,10 +411,13 @@ void display(char username1[])
 	gotoxy(0, 11);
 	printf(" 2....TRANSFER MONEY");
 	gotoxy(0, 13);
-	printf(" 3....LOG OUT\n\n");
+	printf(" 3....DELETE ACCOUNT\n\n");
 	gotoxy(0, 15);
-	printf(" 4....EXIT\n\n");
-
+	printf(" 4....APPLY CHEQUE BOOK\n\n");
+	gotoxy(0, 17);
+	printf(" 5....LOG OUT\n\n");
+	gotoxy(0,19);
+	printf(" 6....Exit\n\n");
 	printf(" ENTER YOUR CHOICES..");
 	scanf("%d",&choice);
 
@@ -416,11 +432,18 @@ void display(char username1[])
 		break;
 
 	case 3:
+		accountdeleted();
+        break;
+        
+    case 4:
+    	cheque();
+    	break;
+    	
+	case 5:
 		logout();
 		login();
 		break;
-
-	case 4:
+	case 6:
 		exit(0);
 		break;
 	}
@@ -468,11 +491,9 @@ void transfermoney(void)
 				1, fp))
 
 	{
-		if (strcmp(usernamep,
-				u1.username)
+		if (strcmp(usernamep,	u1.username)
 			== 0) {
-			strcpy(m1.usernameto,
-				u1.username);
+			strcpy(m1.usernameto,u1.username);
 			strcpy(m1.userpersonfrom,
 				usernamet);
 		}
@@ -609,141 +630,33 @@ void logout(void)
 
 	getch();
 }
-void cheque(void)
+int main()
 {
-	struct chq s;
-	char b;
-	FILE *fd;
-	fd = fopen("chq.txt", "ab");
-	printf("Enter your First Name:");
-	scanf("%s",&s.fuser);
-	printf("Enter your Last Name:");
-	scanf("%s",&s.luser);
-	printf("Enter Your Id:");
-	scanf("%d",&s.id);
-	printf("Enter your Pan number:");
-	scanf("%s",&s.pan);
-	printf("Enter your Aadhar number:");
-	scanf("%s",&s.aad);
-	printf("Your Details:-");
-	printf("\nFirst name- %s\nLAst Name- %s\nID- %d\nPan Number- %s\nAadhar Number- %s\n",s.fuser,s.luser,s.id,s.pan,s.aad);
-	printf("Enter Your Phone Number:");
-	scanf("%d",&s.ph);
-	printf("Press Enter to continue");
-	getch( );
-	fwrite(&s, sizeof(s),1, fd);
-		fclose(fd);
-	
-	
-	
-	for (int i = 0; i < 70; i++) {
-		for (int j = 0; j < 1200000; j++) {
-			j++;
-			j--;
-		}
-		printf("*");
-	}
-	printf("\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-	printf("\n\n\n \t\t\t\t\tYour Cheque book has been Applied\n\n\n\n");
-	printf("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-    printf("\n\n\nAn message will be sent to your registered mobile number when the checkbook is ready to be shipped;)");
-}
-void del()
-{
-	char user2[50];
-	char password[20];
-	int passwordlength, i, seek = 0;
-	char ch;
-	FILE *fp, *fu;
-	struct pass u1;
-	struct userpass p1;
-
-	struct userpass u2;
-
-	// Opening file to
-	// write data of a user
-	fp = fopen("username.txt", "ab");
-
-	// Inputs
-	system("cls");
-	printf("Enter the details of the account you want to delete");
-	printf("\n\nFIRST NAME..");
-	scanf("%s", &u1.fname);
-
-	printf("\n\n\nLAST NAME..");
-	scanf("%s", &u1.lname);
-
-	printf("\n\nFATHER's NAME..");
-	scanf("%s", &u1.fathname);
-
-	printf("\n\nMOTHER's NAME..");
-	scanf("%s", &u1.mothname);
-
-	printf("\n\nADDRESS..");
-	scanf("%s", &u1.address);
-
-	printf("\n\nACCOUNT TYPE");
-	scanf("%s", &u1.typeaccount);
-
-	printf("\n\nDATE OF BIRTH..");
-	printf("\nDATE-");
-	scanf("%d", &u1.date);
-	printf("\nMONTH-");
-	scanf("%d", &u1.month);
-	printf("\nYEAR-");
-	scanf("%d", &u1.year);
-
-	printf("\n\nADHAR NUMBER");
-	scanf("%s", u1.adharnum);
-
-	printf("\n\nPHONE NUMBER");
-	scanf("%s", u1.pnumber);
-
-	printf("\n\nUSERNAME.. ");
-	scanf("%s", &u1.username);
-
-	printf("\n\nPASSWORD..");
-
-	// Taking password in the form of
-	// stars
-	for (i = 0; i < 50; i++) {
-		ch = getch();
-		if (ch != 13) {
-			password[i] = ch;
-			ch = '*';
-			printf("%c", ch);
-		}
-		else
+	int n;
+	intro();
+	getch();
+	system("cls");//clrscr
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n");
+	printf("\t\t Welcome to Online Banking System");
+	printf("\n\t 1.Create Account");
+	printf("\n\t 2.Login");
+	printf("\n\t 3.Exit\n");
+	printf("Enter What You wanna Do:");
+	scanf("%d",&n);
+	switch(n)
+	{
+		case 1:
+			system("cls");
+		    printf("\n\n USERNAME 50 CHARACTERS MAX!!");
+		    printf("\n\n PASSWORD 50 CHARACTERS MAX!!");
+		    account();
+		    break;
+		case 2:
+			login();
 			break;
+	    case 3:
+	    	exit(0);
+	    	break;
 	}
-	// Writing to the file
-	fwrite(&u1, sizeof(u1),
-		1, fp);
-
-	// Closing file
-	fclose(fp);
-
-	// Calling another function
-	// after successful creation
-	// of account
-	accountdeleted();
-}
-void accountdeleted(void)
-{
-	int i;
-	char ch;
-	system("cls");
-	printf(
-		"PLEASE WAIT....\n\nYOUR DATA IS PROCESSING....");
-	for (i = 0; i < 200000000; i++) {
-		i++;
-		i--;
-	}
-
-	gotoxy(30, 10);
-
-	printf("ACCOUNT DELETED SUCCESSFULLY....");
-	gotoxy(0, 20);
-
-	
+    
 }
